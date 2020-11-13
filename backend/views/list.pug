@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    h1 The number of the #{type}: #{items.length}
+    
+    pre #{JSON.stringify(items, null, 4)}
