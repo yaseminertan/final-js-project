@@ -28,7 +28,7 @@ export default new Vuex.Store({
         const result=await axios.get('http://localhost:3000/issue/all/json')
         commit('setIssues',result.data)
       },
-   
+      
   },
   modules: {
   }
