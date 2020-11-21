@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Issue from '../views/Issue.vue'
-import Home from '../views/Home.vue'
+import Issues from '../views/Issues.vue'
+//import Home from '../views/Home.vue'
+import Teams from '../views/Teams.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: Home
+  // },
   {
     path: '/issue/:id',
     name: 'issue',
@@ -18,9 +20,14 @@ const routes = [
   },
   
   {
-    path: '/issues/all/json',
+    path: '/',
     name: 'issues',
-    component: Home
+    component: Issues
+  },
+  {
+    path: '/teams',
+    name: 'teams',
+    component: Teams
   },
   
 ]

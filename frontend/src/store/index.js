@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     // counter:0,
     issue:{},
-    issues:[]
+    issues:[],
+    teams:[],
   },
   mutations: {
     setIssue(state,data){
@@ -16,6 +17,9 @@ export default new Vuex.Store({
       },
       setIssues(state,data){
         state.issues=data
+      },
+      setTeams(state,data){
+        state.teams=data
       },
   },
   actions: {
@@ -28,7 +32,11 @@ export default new Vuex.Store({
         const result=await axios.get('http://localhost:3000/issue/all/json')
         commit('setIssues',result.data)
       },
-      
+
+      async fetchTeams({commit}){
+         const result=await axios.get('http://localhost:3000/team/all/json')
+         commit('setTeams',result.data)
+       },
   },
   modules: {
   }
