@@ -25,15 +25,15 @@ export default {
   main
    <h2>Issues</h2>
     div(class='issues')
-      div(class='issue-created')
-        h3 Created 
-        Issue-card(v-for="issue in issues",:issue="issue" v-if="issue.status=='created'")
-      div(class='issue-created')
-        h3 On Process
-        Issue-card(v-for="issue in issues",:issue="issue" v-if="issue.status=='onprocess'")
-      div(class='issue-created')
-        h3 Finished 
-        Issue-card(v-for="issue in issues",:issue="issue" v-if="issue.status=='finished'")
+      div(class='issue-category')
+        h3 TO DO
+        Issue-card(v-for="issue in issues",:issue="issue"  v-bind:key="issue.id" v-if="issue.status=='created'")
+      div(class='issue-category')
+        h3 IN PROGRESS
+        Issue-card(v-for="issue in issues",:issue="issue"  v-bind:key="issue.id" v-if="issue.status=='progress'")
+      div(class='issue-category')
+        h3 DONE 
+        Issue-card(v-for="issue in issues",:issue="issue"  v-bind:key="issue.id" v-if="issue.status=='finished'")
 </template>
 
 <style scoped>
@@ -42,7 +42,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-.issue-created{
+.issue-category{
   flex-direction: column;
   display: flex;
   padding: 10px;

@@ -10,17 +10,21 @@ export default new Vuex.Store({
     issue:{},
     issues:[],
     teams:[],
+    people:[],
   },
   mutations: {
     setIssue(state,data){
-        state.issue=data
-      },
-      setIssues(state,data){
-        state.issues=data
-      },
-      setTeams(state,data){
-        state.teams=data
-      },
+      state.issue=data
+    },
+    setIssues(state,data){
+      state.issues=data
+    },
+    setTeams(state,data){
+      state.teams=data
+    },
+    setPeople(state,data){
+      state.people=data
+    },
   },
   actions: {
     
@@ -37,6 +41,10 @@ export default new Vuex.Store({
          const result=await axios.get('http://localhost:3000/team/all/json')
          commit('setTeams',result.data)
        },
+       async fetchPeople({commit}){
+        const result=await axios.get('http://localhost:3000/person/all/json')
+        commit('setPeople',result.data)
+      },
   },
   modules: {
   }

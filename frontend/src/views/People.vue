@@ -1,41 +1,39 @@
 <script>
 // @ is an alias to /src
-import teamCard from '@/components/team-card.vue'
+import personCard from '@/components/person-card.vue'
 import {mapState,mapActions} from 'vuex'
 export default {
-  name: 'Teams',
+  name: 'people',
   components: {
-    teamCard
+    personCard
   },
   computed:{
-    ...mapState(['teams'])
+    ...mapState(['people'])
     
   },
   methods:{
-    ...mapActions(['fetchTeams'])
+    ...mapActions(['fetchPeople'])
    
   },
   created(){
-    this.fetchTeams()
+    this.fetchPeople()
   }
 }
 </script>
 
 <template lang='pug'>
   main
-   <h2>Teams</h2>
-    div(class='teams')
-        div.team
-            team-card(v-for="team in teams",:team="team"  v-bind:key="team.id")
+   <h2>People</h2>
+    div(class='people')
+        div.person
+            personCard(v-for="person in people",:person="person"  v-bind:key="person.id")
 </template>
 
 <style scoped>
-.teams{
+.people{
   padding: 10px 0;
 }
-.team{
-   flex-wrap: wrap;
-    display: flex;
+.person{
     padding: 10px;
     margin: 20px;
     border-radius: 10px;
