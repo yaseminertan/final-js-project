@@ -25,26 +25,32 @@ export default new Vuex.Store({
     setPeople(state,data){
       state.people=data
     },
+    addIssue(state,data){
+      state.issue=data
+    }
   },
   actions: {
     
     async fetchIssue({commit}, id){
-       const result=await axios.get(`http://localhost:3000/issue/${id}/json`)
-       commit('setIssue',result.data)
-     },
-     async fetchIssues({commit}){
-        const result=await axios.get('http://localhost:3000/issue/all/json')
-        commit('setIssues',result.data)
-      },
-
-      async fetchTeams({commit}){
-         const result=await axios.get('http://localhost:3000/team/all/json')
-         commit('setTeams',result.data)
-       },
-       async fetchPeople({commit}){
-        const result=await axios.get('http://localhost:3000/person/all/json')
-        commit('setPeople',result.data)
-      },
+      const result=await axios.get(`http://localhost:3000/issue/${id}/json`)
+      commit('setIssue',result.data)
+    },
+    async fetchIssues({commit}){
+      const result=await axios.get('http://localhost:3000/issue/all/json')
+      commit('setIssues',result.data)
+    },
+    async addIssue({commit},params){
+      const result=await axios.post('http://localhost:3000/issue',params)
+      commit('addIssue',result.data)
+    },
+    async fetchTeams({commit}){
+      const result=await axios.get('http://localhost:3000/team/all/json')
+      commit('setTeams',result.data)
+    },
+    async fetchPeople({commit}){
+      const result=await axios.get('http://localhost:3000/person/all/json')
+      commit('setPeople',result.data)
+    },
   },
   modules: {
   }

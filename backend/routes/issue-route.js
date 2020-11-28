@@ -28,7 +28,9 @@ router.get('/:id/json', async (req, res) => {
   if(!issue) res.status(404)
   res.send(issue)
 })
-router.post('/', async (req, res) => {
+router.post('/issue', async (req, res) => {
+  console.log('post');
+  res.header("Access-Control-Allow-Origin", "*")
   const issue = await IssueService.add(req.body)
   res.send(issue)
 })
