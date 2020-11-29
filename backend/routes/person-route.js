@@ -37,10 +37,10 @@ router.delete('/:id', async (req, res) => {
   res.send(user)
 })
 
-router.post('/:id/team', async (req, res) => {
-  const user = await PersonService.find(req.params.id)
-  const team = await TeamService.find(req.body.team)
-  await PersonService.joinTeam(user, team)
+router.post('/team', async (req, res) => {
+  const user = await PersonService.find(req.params.person)
+  const team = await TeamService.find(req.params.team)
+  await PersonService.changeTeam(user, team)
   res.send(user)
 })
 

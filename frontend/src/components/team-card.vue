@@ -14,12 +14,13 @@ export default {
     article.card
         h4.card-title 
             p.text {{team.name}} 
-                h5(v-if="team.issues.length!=0") 
+                h4(v-if="team.issues.length!=0") 
                     h5 Issues: 
-                        h6(v-for="issue in team.issues") {{issue.text}}
+                        h5(v-for="issue in team.issues") 
+                            li {{issue.text}}
                 h5(v-if="team.people.length!=0") 
-                    h5 People: 
-                        h6(v-for="person in team.people") {{person.name}}
+                    h4 People: 
+                        h5(v-for="person in team.people") {{person.name}}
                 
 </template>
 
@@ -39,11 +40,14 @@ export default {
         color:rgb(65, 62, 62);
         font-size: 15px;
         font-weight: lighter;
+        text-transform: uppercase;
     }
     .router{
         text-decoration: none;
     }
-    h5, h6{
+    h4, h5, h6{
         margin: 5px;
+        font-weight: normal;
+        letter-spacing: 0.05rem;
     }
 </style>

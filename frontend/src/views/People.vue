@@ -10,54 +10,56 @@ export default {
    data: () => {
     return {
       add:false,
+      selectedTeam: '',
     }},
   computed:{
-    ...mapState(['people'])
+    ...mapState(['people','teams'])
     
   },
   methods:{
-    ...mapActions(['fetchPeople','addPerson']),
+    ...mapActions(['fetchPeople','fetchTeams','addPerson']),
    add_person(){
-     console.log('saving');
-     let list=['5faaa0c8ce82d73580839be9','5fb8d183d661a72b243c2169','5fb8d1a1d661a72b243c216a']
-     let team=list[Math.floor(Math.random()*3)]
-    let params={
+     let params={
       name:document.getElementById('name').value,
-      team:team,
-    }
+      team:this.selectedTeam,
+     }
+    console.log('team',this.selectedTeam);
     this.addPerson(params);
     location.reload();
    }
   },
   created(){
-    this.fetchPeople()
+    this.fetchPeople();
+    this.fetchTeams();
   }
 }
 </script>
 
 <template lang='pug'>
   main
-   <h2>People</h2>
-   button(@click='add=true') + Add person
-
    div.modal-container
       .modal(v-if="add" @close="add = false" class='modal')
         .grid
           .row.align-between 
             label New Person
             button(@click='add = false') X
-          .row.align-between  
-            input(style='width:100%' id='name' placeholder='Name')
+          .row
+            input(id='name' placeholder='Name')
+          .row
+            select(v-model="selectedTeam" name="teams" id="teams" class="form-control" placeholder='Select team')
+              option(v-for="(team) in teams" :key="team._id" :value="team._id") {{team.name}}
           .row.align-end
             button(@click='add_person()') Save
 
-
+   button(@click='add=true') + Add person
    div(class='people')
       div.person
+        p.title People
         personCard(v-for="person in people",:person="person"  v-bind:key="person.id")
 </template>
 
 <style scoped>
+
 .people{
   padding: 10px 0;
 }
@@ -70,4 +72,5 @@ export default {
 label{
   float:left
 }
+
 </style>

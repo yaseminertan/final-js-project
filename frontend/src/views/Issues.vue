@@ -42,7 +42,6 @@ export default {
 
 <template lang='pug'>
   main
-   <h1>Issues</h1>
     button(@click='add=true') + Add issue
     div.modal-container
       .modal(v-if="add" @close="add = false" class='modal')
@@ -51,10 +50,11 @@ export default {
             label New Issue
             button(@click='add = false') X
           .row 
-            textarea(wrap='true' style='width:95%' rows=6 id='issueText' placeholder='Issue Text')
+            textarea(wrap='true' rows=6 id='issueText' placeholder='Issue Text')
           .row.align-end
             button(@click='add_Issue()') Save
 
+    //- p.title(style='text-align:center') Issues
     div(class='issues')
       div(class='issue-category')
         h3 TO DO

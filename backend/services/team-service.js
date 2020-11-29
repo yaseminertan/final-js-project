@@ -17,6 +17,8 @@ class TeamService extends BaseService {
         await person.save()
         await team.save()
     }
+    
+
 }
 
 module.exports = new TeamService()

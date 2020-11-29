@@ -15,6 +15,16 @@ class PersonService extends BaseService {
         await person.save()
         await team.save()
     }
+    async changeTeam(person,team) {
+        // let oldTeam=person.team;
+        // let index=oldTeam.people.indexOf(person);
+        // oldTeam.people.splice(index,1);
+        person.team=team;
+        team.people.push(person);
+        await person.save();
+        await team.save();
+     //   await oldTeam.save();
+    }
 }
 
 module.exports = new PersonService()
