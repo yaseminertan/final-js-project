@@ -18,13 +18,19 @@ export default {
   },
   methods:{
     ...mapActions(['fetchIssues','addIssue']),
-   add_Issue(){
+    add_Issue(){
      console.log('saving');
+     let list=['5faa9e8f26a14839b00d0ee1','5faa9fe485d76d2b185e2838','5fb8d291d661a72b243c216d',
+     '5fb8d2a5d661a72b243c216e','5fb8d341d661a72b243c216f',
+     '5fb8d343d661a72b243c2170','5fb8d343d661a72b243c2171']
+     let person=list[Math.floor(Math.random()*7)]
     let params={
-      text:document.getElementById('issueText').innerText,
-      status:'created'
+      text:document.getElementById('issueText').value,
+      status:'created',
+      createdby:person
     }
     this.addIssue(params);
+    location.reload();
    }
   },
   created(){
@@ -37,15 +43,16 @@ export default {
 <template lang='pug'>
   main
    <h1>Issues</h1>
-    button(class='btn-add' @click='add=true') + Add issue
+    button(@click='add=true') + Add issue
     div.modal-container
       .modal(v-if="add" @close="add = false" class='modal')
         .grid
-          .row.close
-            button(class='btn-close' @click='add = false') X
+          .row.align-between 
+            label New Issue
+            button(@click='add = false') X
           .row 
-            textarea(wrap='true' style='width:100%' rows=6 id='issueText')
-          .row.close
+            textarea(wrap='true' style='width:95%' rows=6 id='issueText' placeholder='Issue Text')
+          .row.align-end
             button(@click='add_Issue()') Save
 
     div(class='issues')
@@ -78,54 +85,5 @@ h3{
   text-align: left;
   padding-left: 20px;
 }
-button{
-  background: none;
-  border:none;
-  color:rgb(161, 159, 159);
-  font-size: 16px;
-  font-weight: bold;
-  outline: none;
-  display: flex;
-  margin: 10px;
-  cursor: pointer;
-}
-button:hover{
-  color:rgb(71, 71, 71)
-}
-.add{
-  display: flex;
-  justify-content: center;
-}
-.modal-container{
-  display: flex;
-  justify-content: center;
-}
-.modal {
-  display: block;
-  width: 300px;
-  margin: 50px;
-  padding: 30px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease;
-  color:rgb(80, 79, 79);
-  font-size: 16px;
-  position: fixed;
-  z-index: 9998;
-  transition: opacity 0.3s ease;
-}
-.close{
-  display: flex;
-  justify-content: flex-end;
-}
-input, textarea{
-  border:none;
-  border-radius: 10px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-  padding:5px;
-  margin:5px;
-  resize: none;
-  outline: none;
-}
+
 </style>

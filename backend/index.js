@@ -1,6 +1,8 @@
 const express=require('express')
 const app=express()
 const bodyParser=require('body-parser')
+var cors = require('cors')
+app.use(cors())
 
 const personRouter=require('./routes/person-route')
 const teamRouter=require('./routes/team-route')

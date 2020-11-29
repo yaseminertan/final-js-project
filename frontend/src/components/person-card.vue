@@ -13,6 +13,8 @@ export default {
 <template lang="pug">
     article.card
         h4.card-title {{person.name}}
+        div(style='text-align:right')
+            h5 {{person.team.name}}
             
 </template>
 
@@ -36,7 +38,5 @@ export default {
     .router{
         text-decoration: none;
     }
-    h5, h6{
-        margin: 5px;
-    }
+ 
 </style>

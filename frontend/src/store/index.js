@@ -25,9 +25,7 @@ export default new Vuex.Store({
     setPeople(state,data){
       state.people=data
     },
-    addIssue(state,data){
-      state.issue=data
-    }
+  
   },
   actions: {
     
@@ -41,7 +39,11 @@ export default new Vuex.Store({
     },
     async addIssue({commit},params){
       const result=await axios.post('http://localhost:3000/issue',params)
-      commit('addIssue',result.data)
+      commit('setIssue',result.data)
+    },
+    async addPerson({commit},params){
+      const result=await axios.post('http://localhost:3000/person',params)
+      commit('setPeople',result.data)
     },
     async fetchTeams({commit}){
       const result=await axios.get('http://localhost:3000/team/all/json')
