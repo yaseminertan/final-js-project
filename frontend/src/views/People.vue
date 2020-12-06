@@ -53,9 +53,7 @@ export default {
 
    button(@click='add=true') + Add person
    div(class='people')
-      div.person
-        p.title People
-        personCard(v-for="person in people",:person="person"  v-bind:key="person.id")
+     personCard(v-for="person in people",:person="person"  v-bind:key="person.id")
 </template>
 
 <style scoped>

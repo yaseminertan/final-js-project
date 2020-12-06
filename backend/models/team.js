@@ -8,6 +8,7 @@ const TeamSchema=new mongoose.Schema({
     },
     people:[{
         type:mongoose.SchemaTypes.ObjectId,
+        default:{},
         ref:'Person',
         autopopulate:{
             maxDepth:1
@@ -15,6 +16,7 @@ const TeamSchema=new mongoose.Schema({
     }],
     issues:[{
         type:mongoose.SchemaTypes.ObjectId,
+        default:{},
         ref:'Issue',
         autopopulate:{
             maxDepth:1

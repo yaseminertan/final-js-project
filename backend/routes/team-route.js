@@ -26,6 +26,7 @@ router.get('/:id/json', async (req, res) => {
   res.send(team)
 })
 router.post('/', async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
   const team = await TeamService.add(req.body)
   res.send(team)
 })

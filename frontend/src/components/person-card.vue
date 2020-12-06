@@ -24,11 +24,12 @@ export default {
         }
         console.log(params);
         this.changeTeam(params);
-       // location.reload();
+        location.reload();
     }
   },
   created(){
     this.fetchTeams();
+    
   }
 }
 </script>
@@ -39,16 +40,16 @@ export default {
             h5 {{person.team.name}}
             button(style='font-size:12px;' @click='change = true') Change team
         div.modal-container
-        .modal(v-if="change" @close="change = false" class='modal')
-            .grid
-            .row.align-between 
-                label Change Team
-                button(@click='change = false') X
-            .row
-                select(v-model="selectedTeam" name="teams" id="teams" class="form-control" placeholder='Select team')
-                    option(v-for="(team) in teams" :key="team._id" :value="team") {{team.name}}
-            .row.align-end
-                button(@click='change_team()') Save
+            .modal(v-if="change" @close="change = false" class='modal')
+                .grid
+                .row.align-between 
+                    label Change Team
+                    button(@click='change = false') X
+                .row
+                    select(v-model="selectedTeam" name="teams" id="teams" class="form-control" placeholder='Select team')
+                        option(v-for="(team) in teams" :key="team._id" :value="team") {{team.name}}
+                .row.align-end
+                    button(@click='change_team()') Save
                 
 </template>
 
@@ -62,13 +63,8 @@ export default {
         margin: 20px;
         width: 300px;
         background: white;
-   
     }
-    .text{
-        color:rgb(65, 62, 62);
-        font-size: 15px;
-        font-weight: lighter;
-    }
+    
     .router{
         text-decoration: none;
     }

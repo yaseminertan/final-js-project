@@ -10,6 +10,11 @@
 </template>
 
 <style>
+body{
+    background: url("./assets/back.jpg") center center no-repeat fixed;
+    background-size: cover;
+  background-position: center;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,10 +22,13 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+ 
 }
 nav{
   display: flex;
   justify-content: space-around;
+ margin-left:20%;
+ margin-right: 20%;
   font-size: 18px;
   margin-bottom: 30px;;
 }
@@ -47,6 +55,10 @@ button:hover{
 }
 .modal {
   display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
   margin: 50px;
   padding: 30px;
@@ -56,7 +68,6 @@ button:hover{
   transition: all 0.3s ease;
   color:rgb(80, 79, 79);
   font-size: 16px;
-  position: fixed;
   z-index: 9998;
   transition: opacity 0.3s ease;
 }
@@ -68,6 +79,11 @@ button:hover{
 .align-end{
   display: flex;
   justify-content: flex-end;
+}
+.align-right{
+  display: flex;
+  justify-content: right;
+  
 }
 input, textarea, select, option{
   border:none;

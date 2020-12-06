@@ -7,26 +7,48 @@ export default {
   components: {
     teamCard
   },
+  data: () => {
+    return {
+      add:false,
+    }
+  },
   computed:{
     ...mapState(['teams'])
-    
   },
   methods:{
-    ...mapActions(['fetchTeams'])
-   
+    ...mapActions(['fetchTeams','addTeam']),
+    add_team(){
+      let params={
+        name:document.getElementById('name').value,
+      }
+      console.log(params);
+      console.log(this);
+      this.addTeam(params);
+      location.reload();
+    }
   },
   created(){
-    this.fetchTeams()
-  }
-}
+    this.fetchTeams();
+  },
+} 
 </script>
 
 <template lang='pug'>
   main
-   <h2>Teams</h2>
-    div(class='teams')
-        div.team
-            team-card(v-for="team in teams",:team="team"  v-bind:key="team.id")
+    div.modal-container
+      .modal(v-if="add" @close="add = false" class='modal')
+        .grid
+          .row.align-between 
+            label New Team
+            button(@click='add = false') X
+          .row
+            input(id='name' placeholder='Team Name')
+          .row.align-end
+            button(@click='add_team()') Save
+
+    button(@click='add=true') + Add team
+    div.team
+        team-card(v-for="team in teams",:team="team"  v-bind:key="team.id")
 </template>
 
 <style scoped>
@@ -38,8 +60,7 @@ export default {
     display: flex;
     padding: 10px;
     margin: 20px;
-    border-radius: 10px;
-    background: rgba(211, 211, 211, 0.6);
+    justify-content: center;
 }
  
 </style>

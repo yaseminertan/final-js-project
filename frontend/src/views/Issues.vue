@@ -57,13 +57,13 @@ export default {
     //- p.title(style='text-align:center') Issues
     div(class='issues')
       div(class='issue-category')
-        h3 TO DO
+        h4 TO DO
         Issue-card(v-for="issue in issues",:issue="issue"  v-bind:key="issue.id" v-if="issue.status=='created'")
       div(class='issue-category')
-        h3 IN PROGRESS
+        h4 IN PROGRESS
         Issue-card(v-for="issue in issues",:issue="issue"  v-bind:key="issue.id" v-if="issue.status=='progress'")
       div(class='issue-category')
-        h3 DONE 
+        h4 DONE 
         Issue-card(v-for="issue in issues",:issue="issue"  v-bind:key="issue.id" v-if="issue.status=='finished'")
 </template>
 
@@ -81,9 +81,12 @@ export default {
   border-radius: 10px;
   background: rgba(211, 211, 211, 0.6);
 }
-h3{
+h4{
+  color:rgb(88, 86, 86);
   text-align: left;
   padding-left: 20px;
+  font-weight: bold;
+        font-size: 16px;
 }
 
 </style>
