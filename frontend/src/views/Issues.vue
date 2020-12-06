@@ -11,30 +11,26 @@ export default {
    data: () => {
     return {
       add:false,
+      selectedPerson: '',
     }},
   computed:{
-    ...mapState(['issues'])
-    
+    ...mapState(['issues','people'])
   },
   methods:{
-    ...mapActions(['fetchIssues','addIssue']),
+    ...mapActions(['fetchIssues','addIssue','fetchPeople']),
     add_Issue(){
-     console.log('saving');
-     let list=['5faa9e8f26a14839b00d0ee1','5faa9fe485d76d2b185e2838','5fb8d291d661a72b243c216d',
-     '5fb8d2a5d661a72b243c216e','5fb8d341d661a72b243c216f',
-     '5fb8d343d661a72b243c2170','5fb8d343d661a72b243c2171']
-     let person=list[Math.floor(Math.random()*7)]
-    let params={
-      text:document.getElementById('issueText').value,
-      status:'created',
-      createdby:person
+      let params={
+        text:document.getElementById('issueText').value,
+        status:'created',
+        createdby:this.selectedPerson
+      }
+      this.addIssue(params);
+      location.reload();
     }
-    this.addIssue(params);
-    location.reload();
-   }
   },
   created(){
-    this.fetchIssues()
+    this.fetchIssues(),
+    this.fetchPeople();
   }
 }
 </script>
@@ -51,6 +47,9 @@ export default {
             button(@click='add = false') X
           .row 
             textarea(wrap='true' rows=6 id='issueText' placeholder='Issue Text')
+          .row
+            select(v-model="selectedPerson" name="people" id="people" class="form-control" placeholder='Select person')
+                option(v-for="(person) in people" :key="person._id" :value="person") {{person.name}}
           .row.align-end
             button(@click='add_Issue()') Save
 

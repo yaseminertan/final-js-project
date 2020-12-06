@@ -11,8 +11,8 @@ export default {
     },
      data: () => {
         return {
-        change:false,
-        selectedPerson: '',
+            change:false,
+            selectedPerson: '',
         }
      },
      methods:{
@@ -23,7 +23,7 @@ export default {
             team:this.team
         }
         this.changeTeam(params);
-         location.reload();
+        location.reload();
     }
   },
   created(){
@@ -82,7 +82,7 @@ export default {
         text-decoration: none;
     }
     .button-add-person{
-        font-size:12px;
+        font-size:13px;
         margin-bottom: 20px;
         align-self: flex-end;
     }

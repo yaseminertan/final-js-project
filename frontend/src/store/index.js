@@ -54,9 +54,12 @@ export default new Vuex.Store({
       commit('setTeams',result.data)
     },
     async changeTeam({commit},params){
-      console.log('ppppp',params)
       const result=await axios.post('http://localhost:3000/person/team',params)
       commit('setPeople',result.data)
+    },
+    async changeStatus({commit},params){
+      const result=await axios.post('http://localhost:3000/issue/status',params)
+      commit('setIssues',result.data)
     },
     async fetchPeople({commit}){
       const result=await axios.get('http://localhost:3000/person/all/json')

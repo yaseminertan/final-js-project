@@ -38,7 +38,7 @@ a{
 button{
   background: none;
   border:none;
-  color:rgb(161, 159, 159);
+  color:rgba(12, 170, 101, 0.9);
   font-size: 16px;
   font-weight: bold;
   outline: none;
@@ -47,7 +47,7 @@ button{
   cursor: pointer;
 }
 button:hover{
-  color:rgb(71, 71, 71)
+  color:rgb(4, 114, 66)
 }
 .modal-container{
   display: flex;

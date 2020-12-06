@@ -38,7 +38,7 @@ export default {
         h4.card-title {{person.name}}
         div.align-between
             h5 {{person.team.name}}
-            button(style='font-size:12px;' @click='change = true') Change team
+            button(style='font-size:13px;' @click='change = true') Change team
         div.modal-container
             .modal(v-if="change" @close="change = false" class='modal')
                 .grid
